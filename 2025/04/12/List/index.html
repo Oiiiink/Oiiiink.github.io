@@ -71,32 +71,74 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><p>线性表有顺序实现和链式实现两种,二者各有优劣</p>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p><a href="2025/04/12/List/asset/listByArray.c">顺序表-C语言实现</a></p>
+        <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><ul>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8">顺序表</a></li>
+<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8">单链表</a></li>
+<li><a href="#%E5%8F%8C%E9%93%BE%E8%A1%A8">双链表</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8">循环链表</a></li>
+</ul>
+<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>源码 ： <a href="2025/04/12/List/asset/listByArray.c">顺序表-C语言实现</a></p>
 <p>优点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.可进行排序，进而进行二分查找，查找便利。</span><br><span class="line">2.可进行下标索引，对于特定位置的元素查找的时间复杂度为O(1)。</span><br></pre></td></tr></table></figure>
 <p>缺点</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.删改操作复杂,均为O(n)。</span><br><span class="line">2.长度固定，不够灵活。</span><br></pre></td></tr></table></figure>
 <p>具体的代码实现如上链接 ， 有以下几点值得注意：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.对MAXSIZE进行宏定义以便修改。</span><br><span class="line">2.在进行插入，删除时判断线性表是否为满，空（对于所有数据结构均要注意）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><p>源码 ： <a href="2025/04/12/List/asset/LinkedList.c">单链表-C语言实现</a></p>
+<h4 id="构造原理"><a href="#构造原理" class="headerlink" title="构造原理"></a>构造原理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">链表采用任意的存储单元存储元素，通过元素之间的指针来反映各元素之间的逻辑关系</span><br></pre></td></tr></table></figure>
+
+<p><strong>链表的基本操作</strong></p>
+<ul>
+<li><a href="#create-List">createList(int n)</a> &#x2F;&#x2F; 创建一个具有n个结点的链表，这里没有写返回值 </li>
+<li><a href="#get-Length">getLength(Nodeptr list)</a> &#x2F;&#x2F; 获得链表的长度 </li>
+<li><a href="#print-List">printList(Nodeptr list)</a>; &#x2F;&#x2F; 打印输出一个链表的data域 </li>
+<li><a href="#Insert">Insert(Nodeptr list, ElemType elem)</a> </li>
+<li><a href="#search-Node">searchNode(Nodeptr list, ElemType elem)</a> &#x2F;&#x2F; 在链表中查找某一数据元素 </li>
+<li><a href="#delete-Node">deleteNode(Nodeptr list, ElemType elem)</a> &#x2F;&#x2F; 在链表中删除包含某一数据元素的结点<br><em>四大主要操作：创建、查找、插入、删除</em></li>
+</ul>
+<h4 id="create-List"><a href="#create-List" class="headerlink" title="create List"></a>create List</h4><p>推荐不在头节点存放值，而是作为链表元素个数及地址的标识位 ，对于增，删，查，改等操作更加便利</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Nodeptr createList(int n) // 创建一个具有n个结点的链表，这里没有写返回值</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr <span class="built_in">head</span> , ptr;</span><br><span class="line">    <span class="built_in">head</span> = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    <span class="built_in">head</span> -&gt; val = 0 ;</span><br><span class="line">    <span class="built_in">head</span> -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(int i = 0 ; i &lt; n ; ++i )</span><br><span class="line">    &#123;</span><br><span class="line">        Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">        node -&gt; next = NULL ;</span><br><span class="line">        node -&gt; val = getVal() ;    //getVal() , 一个用于读入值的函数</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">head</span> == NULL)&#123;</span><br><span class="line">            <span class="built_in">head</span> -&gt; next = node ;</span><br><span class="line">            ptr = node ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            ptr -&gt; next = node ;</span><br><span class="line">            ptr = ptr -&gt; next ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">head</span> -&gt; val ++ ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">head</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="get-Length"><a href="#get-Length" class="headerlink" title="get Length"></a>get Length</h4><p>在本写法中，直接将head结点的val域返回即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int getLength(Nodeptr list) // 获得链表的长度 </span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> list -&gt; val ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可从头结点开始遍历</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><p>主要有三种插入方式：头插法，尾插法，在某特定结点后插入</p>
+<h5 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void headInsert(Nodeptr list , ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    node -&gt; next = list -&gt; next ;</span><br><span class="line">    list -&gt; next = node ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void tailInsert(Nodeptr list , ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    //尾插法采用遍历方式，时间复杂度为O(n)</span><br><span class="line">    Nodeptr ptr = list ;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL) ptr = ptr -&gt; next ;</span><br><span class="line">    ptr -&gt; next = node ;</span><br><span class="line"></span><br><span class="line">    list -&gt; val ++ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="在某特定结点处插入"><a href="#在某特定结点处插入" class="headerlink" title="在某特定结点处插入"></a>在某特定结点处插入</h5><p>假设我们已经通过某些规则找到了需要插入其后的结点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void insertNode(Nodeptr list, Nodeptr* p, ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    //尾插法采用遍历方式，时间复杂度为O(n)</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    //找到特定结点，若未找到则插入尾端</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL &amp;&amp; ptr != p) ptr = ptr -&gt; next ;</span><br><span class="line">    node -&gt; next = ptr -&gt; next ;</span><br><span class="line">    ptr -&gt; next = node ;</span><br><span class="line"></span><br><span class="line">    list -&gt; val ++ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际上，头插法可以看作是p &#x3D;&#x3D; list , 尾插法可以看作是p &#x3D;&#x3D; NULL 或者p &#x3D;&#x3D; 一个不存在的结点 </p>
+<h4 id="delete-Node"><a href="#delete-Node" class="headerlink" title="delete Node"></a>delete Node</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void deleteNode(Nodeptr list, ElemType elem) // 在链表中删除包含某一数据元素的结点 </span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL &amp;&amp; ptr -&gt; next -&gt; val != elem) ptr = ptr -&gt; next ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr -&gt; next == NULL) <span class="built_in">printf</span>(<span class="string">&quot;Err : delete failure \n&quot;</span>) ;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Nodeptr remove = ptr -&gt; next ;</span><br><span class="line">        ptr -&gt; next = remove -&gt; next ;</span><br><span class="line"></span><br><span class="line">        free(remove) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="search-Node"><a href="#search-Node" class="headerlink" title="search Node"></a>search Node</h4><p>在链表中查找某元素 ，找到则返回元素在当前链表中的位置，否则返回-1<br><em>需要注意的是，由于链表的插入位置任意，因此返回的位置只在链表不发生改变的情况下可用</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int searchNode(Nodeptr list, ElemType elem) // 在链表中查找某一数据元素</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list -&gt; next ;</span><br><span class="line">    int k = 1 ;</span><br><span class="line">    <span class="keyword">while</span>(ptr != NULL &amp;&amp; ptr -&gt; val != elem) &#123;</span><br><span class="line">        ptr = ptr -&gt; next ;</span><br><span class="line">        k++ ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr == NULL)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;No target\n&quot;</span>) ;</span><br><span class="line">        <span class="built_in">return</span> -1 ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">return</span> k ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="print-List"><a href="#print-List" class="headerlink" title="print List"></a>print List</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void printList(Nodeptr list) // 打印输出一个链表的data域 </span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span> , ptr -&gt; next -&gt; val); </span><br><span class="line">        ptr = ptr -&gt; next ;</span><br><span class="line">    &#125;</span><br><span class="line">    ptr = ptr -&gt; next ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span> , ptr -&gt; val ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://oiiiink.github.io/2025/04/12/List/" data-id="cm9f3rnt400018swlgu4h8prc" data-title="数据结构之线性表" class="article-share-link">Teilen</a>
+      <a data-url="https://oiiiink.github.io/2025/04/12/List/" data-id="cm9fclngv0000f0wl110qg9hv" data-title="数据结构之线性表" class="article-share-link">Teilen</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%EF%BC%8C-%E7%BA%BF%E6%80%A7%E8%A1%A8-%EF%BC%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8-%EF%BC%8C-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/" rel="tag">数据结构 ， 线性表 ，双向链表 ， 循环链表</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-  
-    <a href="/2025/04/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2025/04/13/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -108,6 +150,13 @@
         <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%EF%BC%8C-%E7%BA%BF%E6%80%A7%E8%A1%A8-%EF%BC%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8-%EF%BC%8C-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/" rel="tag">数据结构 ， 线性表 ，双向链表 ， 循环链表</a></li></ul>
+    </div>
+  </div>
+
 
   
     
@@ -117,11 +166,11 @@
       <ul>
         
           <li>
-            <a href="/2025/04/12/List/">数据结构之线性表</a>
+            <a href="/2025/04/13/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2025/04/11/hello-world/">Hello World</a>
+            <a href="/2025/04/12/List/">数据结构之线性表</a>
           </li>
         
       </ul>
