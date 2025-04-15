@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CS61A notes | Oiiiink&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Oiiiink&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Enjoy Programming ! Enjoy life   -----送给我自己</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-CS61A-notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/15/CS61A-notes/" class="article-date">
+  <time class="dt-published" datetime="2025-04-15T05:58:13.000Z" itemprop="datePublished">2025-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      CS61A notes
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="第四课"><a href="#第四课" class="headerlink" title="第四课"></a>第四课</h2><h3 id="用函数来表示判断语句"><a href="#用函数来表示判断语句" class="headerlink" title="用函数来表示判断语句"></a>用函数来表示判断语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> statement :</span><br><span class="line">    expression1</span><br><span class="line"><span class="keyword">else</span> expression2</span><br><span class="line"></span><br><span class="line">等于</span><br><span class="line"></span><br><span class="line">def if_(statement , expression1 , expression2) :</span><br><span class="line">    <span class="keyword">if</span> statement :</span><br><span class="line">        expression1</span><br><span class="line">    <span class="keyword">else</span> expression2</span><br></pre></td></tr></table></figure>
+<p>但是python调用函数时，会先将传入函数的所有参数求值，再进入函数所在frame，也就是说，用函数代替判断语句时，可能会出现问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def if_(x &gt;= 0 , sqrt(x) , 0):</span><br></pre></td></tr></table></figure>
+<p>该情况下，sqrt(-16)会先进行运算，导致程序出错。</p>
+<h3 id="and-，-or-短路"><a href="#and-，-or-短路" class="headerlink" title="and ， or 短路"></a>and ， or 短路</h3><p>判断语句和and，or都会跳过部分语句。</p>
+<h3 id="函数作为返回值"><a href="#函数作为返回值" class="headerlink" title="函数作为返回值"></a>函数作为返回值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def makeadder_(k) :</span><br><span class="line">    def adder_(n) :</span><br><span class="line">        <span class="built_in">return</span> n + k</span><br><span class="line">    def mul_(n) :</span><br><span class="line">        <span class="built_in">return</span> n * k</span><br><span class="line">    <span class="built_in">return</span> adder_ , mul_</span><br><span class="line"></span><br><span class="line">Myadd , Mymul = makeadder_(3)</span><br><span class="line"><span class="comment">#makeadder_函数接受参数3赋给k并构造了一个adder_函数，该函数需要接受参数传递给n，并返回n + 3的值，3由makeadder_给出</span></span><br><span class="line">num = Myadd(5) <span class="comment"># 8</span></span><br><span class="line">num1 = Mymul(5) <span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oiiiink.github.io/2025/04/15/CS61A-notes/" data-id="cm9i4t1hb0000fcwl0sn1asoh" data-title="CS61A notes" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CA61A-python/" rel="tag">CA61A , python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/15/Stack-and-Queue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Stack and Queue</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CA61A-python/" rel="tag">CA61A , python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%EF%BC%8C-%E7%BA%BF%E6%80%A7%E8%A1%A8-%EF%BC%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8-%EF%BC%8C-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/" rel="tag">数据结构 ， 线性表 ，双向链表 ， 循环链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%EF%BC%8C%E9%98%9F%E5%88%97/" rel="tag">栈，队列</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/15/CS61A-notes/">CS61A notes</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/15/Stack-and-Queue/">Stack and Queue</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/12/List/">数据结构之线性表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">四月 2025</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//letter list
+//op stack : 表示已经进行过的操作
+//为简化操作,先对操作栈进行操作，最后一起对字符串进行操作
+//栈的特点，仅在一头操作
+//对list设置头结点，便于更改0位置
+//注意函数返回值
+struct Stack{
+    int op ;
+    int pos ;
+    char *str ;
+    struct Stack* next ;
+};
+typedef struct Stack Stack ;
+Stack* initStack()
+{
+    Stack* stack = (Stack*)malloc(sizeof(Stack)) ;
+    stack -> op = 0 ;
+    stack -> pos = 0 ;
+    stack -> str = NULL;
+    stack -> next = NULL ;
+
+    return stack ;
+}
+struct Node{
+    char letter ;
+    struct Node* llink ;
+    struct Node* rlink ;
+};
+typedef struct Node Node ;
+Node* initNode()
+{
+    Node* node = (Node*)malloc(sizeof(Node)) ;
+    node -> letter = 0 ;
+    node -> llink = NULL ;
+    node -> rlink = NULL ;
+
+    return node ;
+}
+Stack* top ;
+Stack* initialStack()
+{
+    Stack* stack = initStack() ,*ptr = stack ;
+    int n ;
+    scanf("%d" , &n) ;
+    for(int i = 0 ; i < n ; ++i)
+    {
+        int op , pos ;
+        char* s = (char*)malloc(sizeof(char) * 550) ;
+        scanf("%d%d%s" , &op , &pos , s) ;
+
+        if(i == 0){
+            ptr -> op = op ;
+            ptr -> pos = pos ;
+            int len = strlen(s) ;
+            ptr -> str = (char*)malloc(sizeof(char) * (len + 1)) ;
+            strcpy(ptr -> str , s) ;
+            free(s) ;
+        }
+        else{
+            Stack* elem = initStack() ;
+            elem -> op = op ;
+            elem -> pos = pos ;
+            int len = strlen(s) ;
+            elem -> str = (char*)malloc(sizeof(char) * (len + 1)) ;
+            strcpy(elem -> str , s) ;
+            free(s) ;
+
+            elem -> next = ptr ;
+            ptr = elem ;
+        }
+    }
+    top = ptr ; //指向栈顶
+
+    return stack ;
+}
+Node* initialList(char* str)
+{
+    Node* head = initNode() ;
+    int len = strlen(str) ;
+
+    Node* ptr = head ;
+    for(int i = 0 ; i < len ; ++i)
+    {
+        Node* node = initNode() ;
+        node -> letter = str[i] ;
+        node -> llink = ptr ;
+        ptr -> rlink = node ;
+        ptr = ptr -> rlink ;
+    }
+
+    return head ;
+}
+void Insert(int pos , char* s , Node* list)
+{
+    //从循环结束的下一个位置开始插入
+    int k = 0 ;
+    Node* ptr = list ;
+    while(k < pos) {ptr = ptr -> rlink ; k++ ;}
+
+    int len = strlen(s) ;
+    for(int i = 0 ; i < len ; i++)
+    {
+        Node* node = initNode() ;
+        node -> letter = s[i] ;
+        node -> llink = ptr ;
+        node -> rlink = ptr -> rlink ;
+
+        Node* left = ptr , *right = ptr -> rlink ;
+        if(left) left -> rlink = node ;
+        if(right) right -> llink = node ;
+
+        ptr = ptr -> rlink ;
+    }
+}
+void Myremove(int pos , int len , Node* list , char* to)
+{
+    int k = 0 ;
+    Node* ptr = list ;
+    while(k < pos) { ptr = ptr -> rlink ; k++ ;}
+
+    for(int i = 0 ; i < len ; ++i)
+    {
+        Node* re = ptr -> rlink ;
+        if(re == NULL) break ;
+
+        Node* left = re -> llink , *right = re -> rlink ;
+        if(left) left -> rlink = right ;
+        if(right) right -> llink = left ;
+
+        if(to) to[i] = re -> letter ; 
+        free(re) ;
+    }
+}
+void goBack(Node* list , Stack* elem)
+{
+    if(elem -> op == 1){
+        Myremove(elem -> pos , strlen(elem -> str) , list , NULL ) ;
+    }
+    else{
+        Insert(elem -> pos , elem -> str , list) ;
+    }
+}
+int main()
+{
+    //初始化list
+    char* str = (char*)malloc(sizeof(char) * 550) ;
+    fgets(str , 550 , stdin) ;
+    str[(int)strlen(str) - 1] = 0 ; // 消去\n
+    Node* list = initialList(str) ;
+
+    //初始化stack
+    initialStack() ;
+    //栈是单向的，没必要用变量储存
+    
+    int op ;
+    while((scanf("%d" , &op) != EOF) && op != -1)
+    {
+        if(op == 1){
+            int pos ;
+            char* s = (char*)malloc(sizeof(char) * 550) ;
+            scanf("%d%s" , &pos , s) ;
+            Stack* elem = initStack() ;
+            elem -> op = op ;
+            elem -> pos = pos ;
+            int len = strlen(s) ;
+            elem -> str = (char*)malloc(sizeof(char) * (len + 1)) ;
+            strcpy(elem -> str , s) ;
+            free(s) ;
+            Insert(pos , elem -> str , list) ;
+
+            elem -> next = top ;
+            top = elem ;
+        }
+        else if(op == 2){
+            int pos , n ;
+            scanf("%d%d" , &pos , &n) ;
+            Stack* elem = initStack() ;
+            elem -> op = op ;
+            elem -> pos = pos ;
+            elem -> str = (char* )malloc(sizeof(char) * (n + 1)) ;
+            memset(elem -> str , 0 , sizeof(elem -> str)) ;
+            Myremove(pos , n , list , elem -> str) ;
+
+            elem -> next = top ;
+            top = elem ;
+        }
+        else {
+            if(top == NULL) continue ;
+            goBack(list , top) ;
+            Stack* remove = top ;
+            top = top -> next ;
+            //free(remove -> str) ;
+            free(remove) ;
+        }
+    }
+
+    Node* ptr = list ;
+    while(ptr -> rlink != NULL)
+    {
+        ptr = ptr -> rlink ;
+        putchar(ptr -> letter) ;
+    }
+
+    return 0 ;
+}
