@@ -1,0 +1,179 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#define MAXSIZE 1000
+typedef int DataType ; // 可扩展
+
+union elem {
+    DataType num ;
+    char s[3] ;
+};
+struct Node{
+    int flag ; // 0指数字，1指符号
+    union elem val ;
+    struct Node* next ;
+};
+typedef struct Node Node ;
+Node* top ; //指向栈顶
+Node* ptr ; //指向链表末端
+Node* initNode()
+{
+    Node* node = (Node* )malloc(sizeof(Node)) ;
+    node -> flag = 0 ;
+    node -> next = NULL ;
+
+    return node ;
+}
+int isNum(char c)
+{
+    return c <= '9' && c >= '0' ;
+}
+void insert(Node* List , union elem val , int flag) 
+{
+    Node* node = initNode() ;
+    node -> flag = flag ;
+    node -> val = val ;
+
+    if(List -> next == NULL){
+        List -> next = ptr = node ;
+    }
+    else {
+        ptr -> next = node ;
+        ptr = ptr -> next ;
+    }
+} 
+int pri(char* op)
+{
+    if(!strcmp(op , "=") || !strcmp(op , "-=")
+    || !strcmp(op , "*=") || !strcmp(op , "+=") 
+    || !strcmp(op , "/=") || !strcmp(op , "%=")  ) return 1 ;
+    if(!strcmp(op , "<") || !strcmp(op , "<=")
+    || !strcmp(op , ">") || !strcmp(op , ">=") ) return 2 ;
+    if(!strcmp(op , "==") || !strcmp(op , "!=") ) return 3 ;
+    if(!strcmp(op , "+") || !strcmp(op , "-") ) return 4 ;
+    if(!strcmp(op , "*") || !strcmp(op , "/") || !strcmp(op , "%")) return 5 ;
+
+    return 0 ;
+}
+int isEmpty()
+{
+    return top == NULL ;
+}
+void pop()
+{
+    if(isEmpty()){
+        printf("Err : stack empty\n") ;
+        return ;
+    }
+
+    Node* remove = top ;
+    top = top -> next ;
+    free(remove) ;
+}
+void push(union elem val)
+{
+    Node* node = initNode() ;
+    node -> flag = 1 ;
+    node -> val = val ;
+
+    node -> next = top ;
+    top = node ;
+}
+void processOpe(union elem val , Node* list)
+{
+    if(!strcmp(val.s , ")")){
+        while(strcmp(top -> val.s , "(")){
+            insert(list , top -> val , 1) ;
+            pop();
+        }
+        pop() ;
+    }
+    else if(!strcmp(val.s , "(")) push(val) ;
+    else{
+        while(top && pri(top -> val.s) > pri(val.s))
+        {
+            insert(list , top -> val , 1) ;
+            pop() ;
+        }
+        push(val) ;
+    }
+}
+void infixToPostfix(char* s , Node* ansList)
+{
+    int i = -1 ;
+    char c; 
+    char op[3] ;
+    op[0] = op[1] = op[2] = 0;
+    int num = 0 ;
+    while((c = s[++i]) != '&')
+    {
+        if(isNum(c)){
+            if(op[0]) {
+                //存在运算符
+                union elem val ;
+                strcpy(val.s , op) ;
+                processOpe(val , ansList) ;
+                op[0] = op[1] = 0 ;
+            }
+            num *= 10 ;
+            num += c - '0' ;
+        }
+        else if(c != ' '){
+            if(!op[0]) {
+                union elem val ;
+                val.num = num ;
+                insert(ansList , val , 0) ;
+                num = 0 ;
+                op[0] = c ;
+            }
+            else if(c == '=') op[1] = c ;
+            else{
+                union elem val ;
+                strcpy(val.s , op) ;
+                processOpe(val , ansList) ;
+                op[0] = op[1] = 0 ;
+
+                op[0] = c ;
+            }
+        }
+        else continue ;
+    }
+    if(op[0]) {
+        //存在运算符
+        union elem val ;
+        strcpy(val.s , op) ;
+        processOpe(val , ansList) ;
+        op[0] = op[1] = 0 ;
+    }
+    else{
+        union elem val ;
+        val.num = num ;
+        insert(ansList , val , 0) ;
+    }
+
+    ptr -> next = top ;
+}
+void printList(Node* head)
+{
+    Node* ptr = head ;
+
+    while(ptr -> next)
+    {
+        ptr = ptr -> next ;
+        if(ptr -> flag)printf("%s" , ptr -> val.s) ;
+        else printf("%d " , ptr -> val.num) ;
+    }
+}
+int main(void)
+{
+    top = NULL ;
+    char* s = (char* )malloc(sizeof(char) * MAXSIZE) ;
+    fgets(s , MAXSIZE , stdin) ;
+
+    Node* ansList = initNode() ; //作为头结点
+    infixToPostfix(s , ansList) ;
+    printList(ansList) ;
+
+    return 0 ;
+}

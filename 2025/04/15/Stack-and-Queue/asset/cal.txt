@@ -1,0 +1,193 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define maxN 200 
+
+//在头节点中，llink表示next ， rlink表示rear
+typedef struct Node{
+    double val ;
+    struct Node *llink ;
+    struct Node *rlink ;
+}Node ;
+Node* initNode()
+{
+    Node* node = (Node* )malloc(sizeof(Node)) ;
+
+    node -> val = 0 ;
+    node -> llink = node -> rlink = NULL ;
+
+    return node ;
+}
+void insert(Node* head , double val)
+{
+    Node* node = initNode() ;
+    node -> val = val ;
+
+    if(head -> llink == NULL)
+    {
+        head -> llink = node ;
+        head -> rlink = node ;
+        node -> llink = head;
+    }
+    else{
+        head -> rlink -> rlink = node ;
+        node -> llink = head -> rlink ;
+        head -> rlink = head -> rlink -> rlink ;
+    }
+
+}
+double del(Node* head)
+{
+    if(head -> rlink == NULL || head -> rlink == head){
+        return 0 ;
+    }
+
+    Node* rear = head -> rlink ;
+    if(rear -> llink != head) {
+        head -> rlink = rear -> llink ;
+        rear -> llink -> rlink = NULL ;
+    }
+    else head -> llink = head -> rlink = NULL ;
+
+    double num = rear -> val ;
+    free(rear) ;
+    return num ;
+}
+int isNum(char c)
+{
+    return (c <= '9' && c >= '0') ;
+}
+int isOpe(char c)
+{
+    return ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '(') || (c == ')') ) ;
+}
+int priority(char c)
+{
+    switch(c)
+    {
+        case '+' :
+        case '-' : return 1 ;
+                    break ;
+        case '*' : 
+        case '/' : return 2 ;
+                    break ;
+        default : return 999 ;
+    }
+}
+
+char* infixToPostfix(char *s)
+{
+    char *ans = (char* )malloc(sizeof(char) * maxN) ;
+    int i = -1 , k = 0 ;
+
+    Node* OpeList = initNode() ;
+    while(s[++i] != '=')
+    {
+        if(isNum(s[i])) ans[k++] = s[i] ;
+        else if(isOpe(s[i])){
+            //左括号直接压入
+            //右括号取出所有元素，直到遇到左括号
+            //取出栈中所有比s[i] 优先级大的符号（除左括号外）
+            char c = ' ' ;
+            if(isNum(ans[k - 1])) ans[k++] = c ;
+            if(s[i] == '(') insert(OpeList , s[i]) ;
+            else if(s[i] == ')'){
+                char c = (int)del(OpeList) ;
+                while(c != '('){
+                    ans[k++] = c ;
+                    c = (int)del(OpeList) ;
+                }
+            }
+            else{
+                if(OpeList -> rlink == NULL || OpeList -> rlink == OpeList)
+                {
+                    insert(OpeList ,s[i]) ;
+                    continue ;
+                }
+                char top = (int)OpeList -> rlink -> val ;
+                while(top != 0 && priority(top) >= priority(s[i]))
+                {
+                    if(top == '(') break ;
+                    char c1 = (int)del(OpeList) ;
+                    ans[k++] = c1 ;
+                    if(OpeList -> rlink != NULL) top = (int)OpeList -> rlink -> val ;
+                    else top = 0 ;
+                }
+                insert(OpeList ,s[i]) ;
+            }
+        }
+        else ans[k++] = s[i] ;
+    }
+    char top ;
+    while((top = del(OpeList)) != 0)
+    {
+        ans[k++] = top ;
+    }
+    ans[k] = 0 ;
+
+    return ans ;
+}
+double calnum(char ope , double num1 , double num2)
+{
+    switch(ope)
+    {
+        case '+' : return num1 + num2 ;
+        case '-' : return num1 - num2 ;
+        case '*' : return num1 * num2 ;
+        default : return num1 / num2 ;
+    }
+}
+double calans(char* s)
+{
+    int flag = 1 ;
+    /*
+    flag : 当前读取类型
+        1 ：数字
+        0 ：符号
+    */
+
+    int len = (int) strlen(s) ;
+    Node* NumLink = initNode() ;
+    int num = 0 ;
+    for(int i = 0 ; i < len ; ++i)
+    {
+        char c = s[i] ;
+        if(flag || isNum(c))
+        {
+            if(!isNum(c)){
+                insert(NumLink , num) ;
+                num = 0 ;
+                flag = 0 ;
+            }
+            else{
+                flag = 1 ;
+                num *= 10 ;
+                num += c - '0' ;
+            }
+        }
+        if(!flag){
+            if(c == ' ') continue ;
+            double num2 = del(NumLink) ;
+            double num1 = del(NumLink) ;
+            double result = calnum(c , num1 , num2) ;
+            insert(NumLink , result) ;
+        }
+    }
+    double ans = del(NumLink) ;
+    free(NumLink) ;
+    return ans ;
+}
+int main(void)
+{
+    char s[maxN] ;
+    memset(s , 0 , sizeof(s)) ;
+    fgets(s , maxN , stdin) ;
+
+    char* postfix = infixToPostfix(s) ;
+    double ans = calans(postfix) ;
+    
+    free(postfix) ;
+    printf("%.2lf" , ans) ;
+
+    return 0 ;
+}

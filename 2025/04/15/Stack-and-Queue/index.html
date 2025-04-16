@@ -1,215 +1,150 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"oiiiink.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="栈队列应用作业分析与改进（第四次作业）4.文本编辑操作模拟 4.文本编辑操作模拟自己写的源码题目描述 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Stack and Queue">
-<meta property="og:url" content="https://oiiiink.github.io/2025/04/15/Stack-and-Queue/index.html">
-<meta property="og:site_name" content="Oiiiink&#39;s Blog">
-<meta property="og:description" content="栈队列应用作业分析与改进（第四次作业）4.文本编辑操作模拟 4.文本编辑操作模拟自己写的源码题目描述 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-15T01:58:58.000Z">
-<meta property="article:modified_time" content="2025-04-15T07:00:43.223Z">
-<meta property="article:author" content="Oiiiink">
-<meta property="article:tag" content="栈，队列">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="https://oiiiink.github.io/2025/04/15/Stack-and-Queue/">
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://oiiiink.github.io/2025/04/15/Stack-and-Queue/","path":"2025/04/15/Stack-and-Queue/","title":"Stack and Queue"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Stack and Queue | Oiiiink's Blog</title>
-  
-
-
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Oiiiink's Blog</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Enjoy Programming ! Enjoy life   -----送给我自己</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</header>
-        
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">1.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90%E4%B8%8E%E6%94%B9%E8%BF%9B%EF%BC%88%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%BD%9C%E4%B8%9A%EF%BC%89"><span class="nav-number">3.0.1.</span> <span class="nav-text">作业分析与改进（第四次作业）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">4.文本编辑操作模拟</span></a></li></ol></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Oiiiink</p>
-  <div class="site-description" itemprop="description">这个博客将主要作为我的学习笔记，也会写点生活感悟</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">4</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
-
-    
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://oiiiink.github.io/2025/04/15/Stack-and-Queue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Oiiiink">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oiiiink's Blog">
-      <meta itemprop="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Stack and Queue | Oiiiink's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Stack and Queue
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-15 09:58:58 / 修改时间：15:00:43" itemprop="dateCreated datePublished" datetime="2025-04-15T09:58:58+08:00">2025-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h3 id="作业分析与改进（第四次作业）"><a href="#作业分析与改进（第四次作业）" class="headerlink" title="作业分析与改进（第四次作业）"></a>作业分析与改进（第四次作业）</h3><p><a href="#4-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F">4.文本编辑操作模拟</a></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Oiiiink"><meta name="renderer" content="webkit"><meta name="copyright" content="Oiiiink"><meta name="keywords" content="Oiiiink's Blog"><meta name="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Stack and Queue · Mr.Long's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/cat.png"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">longlongyu</div><div class="profile-signature">for me</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Long's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">Stack and Queue</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2025-04-15</span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="栈，队列"> 栈，队列</a></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h1><h2 id="在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。-写在开头-栈-结点-各操作-栈的应用-计算器-问题分析-中缀转后缀-本题代码-思路二示例-栈实现递归-队列-生产者-消费者模式-学了堆再来写。-作业分析与改进-2-计算器-自己写的初版的错误分析-4-文本编辑操作模拟"><a href="#在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。-写在开头-栈-结点-各操作-栈的应用-计算器-问题分析-中缀转后缀-本题代码-思路二示例-栈实现递归-队列-生产者-消费者模式-学了堆再来写。-作业分析与改进-2-计算器-自己写的初版的错误分析-4-文本编辑操作模拟" class="headerlink" title="在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。- 写在开头- 栈  - 结点  - 各操作  - 栈的应用      - 计算器        - 问题分析          - 中缀转后缀        - 本题代码        - 思路二示例      - 栈实现递归- 队列    - 生产者-消费者模式  - 学了堆再来写。  - 作业分析与改进      - 2.计算器        - 自己写的初版的错误分析      - 4.文本编辑操作模拟
+   "></a>在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。<br>- <a href="#%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4">写在开头</a><br>- <a href="#%E6%A0%88">栈</a><br>  - <a href="#%E7%BB%93%E7%82%B9">结点</a><br>  - <a href="#%E5%90%84%E6%93%8D%E4%BD%9C">各操作</a><br>  - <a href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8">栈的应用</a><br>      - <a href="#%E8%AE%A1%E7%AE%97%E5%99%A8">计算器</a><br>        - <a href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90">问题分析</a><br>          - <a href="#%E4%B8%AD%E7%BC%80%E8%BD%AC%E5%90%8E%E7%BC%80">中缀转后缀</a><br>        - <a href="#%E6%9C%AC%E9%A2%98%E4%BB%A3%E7%A0%81">本题代码</a><br>        - <a href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%E7%A4%BA%E4%BE%8B">思路二示例</a><br>      - <a href="#%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%92%E5%BD%92">栈实现递归</a><br>- <a href="#%E9%98%9F%E5%88%97">队列</a><br>    - <a href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F">生产者-消费者模式</a><br>  - <a href="#%E5%AD%A6%E4%BA%86%E5%A0%86%E5%86%8D%E6%9D%A5%E5%86%99">学了堆再来写。</a><br>  - <a href="#%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90%E4%B8%8E%E6%94%B9%E8%BF%9B">作业分析与改进</a><br>      - <a href="#2%E8%AE%A1%E7%AE%97%E5%99%A8">2.计算器</a><br>        - <a href="#%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%88%9D%E7%89%88%E7%9A%84%E9%94%99%E8%AF%AF%E5%88%86%E6%9E%90">自己写的初版的错误分析</a><br>      - <a href="#4%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F">4.文本编辑操作模拟</a>
+   </h2><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>栈（LILO）最大的一个特点就是仅在一端操作。</p>
+<blockquote>
+<p>主要有入栈，出栈，判断栈是否满，是否空，获取栈顶元素</p>
+<blockquote>
+<p>其中判断栈是否已满往往只在顺序栈中是必要的。</p>
+</blockquote>
+</blockquote>
+<h2 id="结点"><a href="#结点" class="headerlink" title="结点"></a>结点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct Node&#123;</span><br><span class="line">    int val ;</span><br><span class="line">    struct Node* next ;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//如果需要对多个栈进行操作，或者需要得到栈的元素个数，可以构造一个栈数据结</span><br><span class="line">构，（通常来说，不建议使用头结点，正如开头所说，需要尊重栈的特点）。</span><br><span class="line">struct Stack&#123;</span><br><span class="line">    struct Node* top ;</span><br><span class="line">    int size ;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="各操作"><a href="#各操作" class="headerlink" title="各操作"></a>各操作</h2><p>栈的几乎所有指针移动操作均由top指针来实现，因此next指针的指向也应该为top指针的移动而服务，next由栈顶指向栈底，对应着top的移动方向。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">int <span class="function"><span class="title">isFull</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    // 视题目要求而定</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">isEmpty</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> top == NULL ;</span><br><span class="line">&#125;</span><br><span class="line">void push(int val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(isFull())&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Err : can&#x27;t push\n&quot;</span>) ;</span><br><span class="line">        <span class="built_in">return</span> -1 ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* node = (Node*)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = val ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    node -&gt; next = top ;</span><br><span class="line">    top = node ;</span><br><span class="line">&#125;</span><br><span class="line">void <span class="function"><span class="title">pop</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Err : can&#x27;t pop\n&quot;</span>) ;</span><br><span class="line">        <span class="built_in">return</span> -1 ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* remove = top ;</span><br><span class="line">    top = top -&gt; next ;</span><br><span class="line">    free(remove) ;</span><br><span class="line">    remove = NULL ;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">top</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> top -&gt; val ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><p>1.<a href="#%E8%AE%A1%E7%AE%97%E5%99%A8">计算器</a><br>2.<a href="#%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%92%E5%BD%92">栈实现递归</a></p>
+<h4 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h4><p>作业题中出现了该应用的简化版：<a href="#2%E8%AE%A1%E7%AE%97%E5%99%A8">点这里查看</a></p>
+<h5 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h5><blockquote>
+<ol>
+<li>本题有两个思路，一个是<a href="#%E4%B8%AD%E7%BC%80%E8%BD%AC%E5%90%8E%E7%BC%80">中缀转后缀</a>，一个是<a href="2025/04/15/Stack-and-Queue/asset/exampleForCp.txt">双栈实现</a></li>
+<li>第一个思路普适性更强，由于我们需要根据运算符的优先级来选择运算顺序，因此运算符的输出并非严格FIFO，因此排除队列结构，又考虑到相同优先级的运算符输出顺序必然FILO，因此选择栈结构实现。</li>
+<li>第二个思路对于该题比较方便，分为数字栈和符号栈。事实上，这两种算法没有本质上的区别，只是第二个思路将数字栈进行了实时运算，最后直接输出答案，而第一种思路则是保存了后缀表达式，因此，这里只对第一种思路进行详细实现</li>
+</ol>
+</blockquote>
+<h6 id="中缀转后缀"><a href="#中缀转后缀" class="headerlink" title="中缀转后缀"></a>中缀转后缀</h6><p><em>值得注意的点</em></p>
+<blockquote>
+<ol>
+<li>该算法不能使用栈来存储后缀表达式，因为最后只会得到一个顺序颠倒的结果，因此使用栈来存储运算符，使用其他结构，最好是链表来存储后缀表达式（也可以将栈结构在反转，但是不推荐）</li>
+<li>这题太难写了。我写累了，改天再写吧。</li>
+</ol>
+</blockquote>
+<h5 id="本题代码"><a href="#本题代码" class="headerlink" title="本题代码"></a><a href="2025/04/15/Stack-and-Queue/asset/infixToPostfix.txt">本题代码</a></h5><h5 id="思路二示例"><a href="#思路二示例" class="headerlink" title="思路二示例"></a><a href="exampleForCp.txt">思路二示例</a></h5><h4 id="栈实现递归"><a href="#栈实现递归" class="headerlink" title="栈实现递归"></a>栈实现递归</h4><hr>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><pre><code>队（FIFO）可在两头进行操作，队的最大特点是严格有序性,它有两个指针front和rear，队头出，队尾进
+同样为了服务于指针的移动，node的next指针指向队尾.
+假如使用数组实现队，最好用循环队列。
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">struct <span class="function"><span class="title">Node</span></span>() </span><br><span class="line">&#123;</span><br><span class="line">    int val ;</span><br><span class="line">    Node* next ;</span><br><span class="line">&#125;;</span><br><span class="line">struct <span class="function"><span class="title">Queue</span></span>() </span><br><span class="line">&#123;</span><br><span class="line">    Node* rear ;</span><br><span class="line">    Node* front ;</span><br><span class="line">&#125;;  //当只需要同时对一个队进行操作时，该结构体是没有必要的</span><br><span class="line"></span><br><span class="line">void <span class="function"><span class="title">initQueue</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    rear = front = NULL ;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">isFull</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    //按照题目要求</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">isEmpty</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> front == NULL ;</span><br><span class="line">&#125;</span><br><span class="line">void push(int val)</span><br><span class="line">&#123;</span><br><span class="line">    Node* node = initNode() ;</span><br><span class="line">    node -&gt; val = val ;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty())&#123;</span><br><span class="line">        rear = front = node ;</span><br><span class="line">        <span class="built_in">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    rear -&gt; next = node ;</span><br><span class="line">    rear = node ;</span><br><span class="line">&#125;</span><br><span class="line">void <span class="function"><span class="title">pop</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty()) <span class="built_in">return</span> -1 ;</span><br><span class="line"></span><br><span class="line">    Node* remove = front ;</span><br><span class="line">    front = front -&gt; next ;</span><br><span class="line">    free(remove) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3 id="生产者-消费者模式"><a href="#生产者-消费者模式" class="headerlink" title="生产者-消费者模式"></a>生产者-消费者模式</h3><h2 id="学了堆再来写。"><a href="#学了堆再来写。" class="headerlink" title="学了堆再来写。"></a>学了堆再来写。</h2><h2 id="作业分析与改进"><a href="#作业分析与改进" class="headerlink" title="作业分析与改进"></a>作业分析与改进</h2><p><a href="#2%E8%AE%A1%E7%AE%97%E5%99%A8">计算器（表达式计算-后缀表达式实现，结果为浮点）</a><br><a href="#4%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F">文本编辑操作模拟</a></p>
+<h4 id="2-计算器"><a href="#2-计算器" class="headerlink" title="2.计算器"></a>2.计算器</h4><p><a href="2025/04/15/Stack-and-Queue/asset/cal.txt">自己写的源码</a><br>题目描述</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">【问题描述】</span><br><span class="line"></span><br><span class="line">从标准输入中读入一个算术运算表达式，如：24 / ( 1 + 5/3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )= ，计算表达式结果，并输出。</span><br><span class="line"></span><br><span class="line">要求：</span><br><span class="line"></span><br><span class="line">1、表达式运算符只有+、-、*、/，表达式末尾的=字符表示表达式输入结束，表达式中可能会出现空格；</span><br><span class="line">2、表达式中会出现圆括号，括号可能嵌套，不会出现错误的表达式；</span><br><span class="line"></span><br><span class="line">3、表达式中出现的操作数都是十进制整数常量；但要求运算结果为浮点型，例如：5/2结果应为2.5。</span><br><span class="line"></span><br><span class="line">4、要求采用逆波兰表达式来实现表达式计算。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">【输入形式】</span><br><span class="line"></span><br><span class="line">从键盘输入一个以=结尾的算术运算表达式。操作符和操作数之间可以有空格分隔。</span><br><span class="line"></span><br><span class="line">【输出形式】</span><br><span class="line"></span><br><span class="line">在屏幕上输出计算结果，小数点后保留两位有效数字。</span><br><span class="line"></span><br><span class="line">【样例输入】</span><br><span class="line"></span><br><span class="line">24 / ( 1 + 5/3 + 36 / 6 / 2 - 2) * ( 12 / 2 / 2 )     =</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">【样例输出】</span><br><span class="line"></span><br><span class="line">19.64</span><br><span class="line">【样例说明】</span><br><span class="line"></span><br><span class="line">按照运算符及括号优先级依次计算表达式的值。</span><br></pre></td></tr></table></figure>
+<h5 id="自己写的初版的错误分析"><a href="#自己写的初版的错误分析" class="headerlink" title="自己写的初版的错误分析"></a>自己写的初版的错误分析</h5><blockquote>
+<ol>
+<li>本题理应使用栈来实现，却使用了左右指针，不伦不类。<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> typedef struct Node&#123;</span><br><span class="line">  double val ;</span><br><span class="line">   struct Node *llink ;</span><br><span class="line">   struct Node *rlink ;</span><br><span class="line">&#125;Node ;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li>在中缀转后缀时没有将数字字符转换为数字压入栈中，这使得后续不得不用‘ ’来区分不同的数字（因为在中缀表达式中各数字天然的使用符号来进行分割，而后缀表达式各数字会挨在一起），而加入空格的操作不够精确，可能会导致大量无用的空间损耗。</li>
+<li>作为一个栈结构，居然没有一个固定的top指针变量，在对栈进行操作时也没有“仅对top指针操作”的意识，不伦不类。</li>
+<li>整体上来讲，该代码与栈毫无关系，是对概念的不了解。</li>
+</ol>
+</blockquote>
 <h4 id="4-文本编辑操作模拟"><a href="#4-文本编辑操作模拟" class="headerlink" title="4.文本编辑操作模拟"></a>4.文本编辑操作模拟</h4><p><a href="2025/04/15/Stack-and-Queue/asset/edit.txt">自己写的源码</a><br>题目描述</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">【问题描述】</span><br><span class="line"></span><br><span class="line">编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：</span><br><span class="line"></span><br><span class="line">op pos str</span><br><span class="line"></span><br><span class="line">其中op为编辑操作命令编码（在此只有插入和删除操作，1表示插入或2表示删除操作）；pos表示插入或删除的位置；str表示已经插入或删除的字符串（中间没有空格）。各数据间以一个空格分隔。</span><br><span class="line"></span><br><span class="line">然后在空一行后，再分行输入当前将要进行的编辑操作，包括如下四种操作（操作编码分别为：1表示插入，2表示删除操作，3表示撤销（即undo操作），-1表示结束）：</span><br><span class="line"></span><br><span class="line">1 pos str</span><br><span class="line"></span><br><span class="line">表示将在pos位置插入字符串str（中间没有空格），各数据间以一个空格分隔；</span><br><span class="line"></span><br><span class="line">2 pos n</span><br><span class="line"></span><br><span class="line">表示将从pos位置开始删除n个字符（各数据间以一个空格分隔），若要删除的字符个数多于已有字符个数（即在文本中从pos开始的字符个数小于n），则按实际字符数删除即可。（提示：为了能够撤销删除操作，应按“2 pos str”形式保存命令。）</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">表示撤销最近执行的插入或删除操作，可以进行多次撤销操作，注意：也可以撤销之前已经发生过的n步编辑操作中的操作。</span><br><span class="line"></span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">表示退出编辑操作，在屏幕上输出最终编辑后的文本。</span><br><span class="line"></span><br><span class="line">要求：</span><br><span class="line"></span><br><span class="line">1、上述所有输入的编辑操作中的字符串str都不包含空白字符（空格符、制表符或换行符）；</span><br><span class="line"></span><br><span class="line">2、插入操作中的位置pos大于等于0，并且小于等于当前文本的字符个数；0位置表示文本第一个字符的位置；若pos为当前文本的字符个数，则表示在文本最后插入字符串；</span><br><span class="line"></span><br><span class="line">3、删除操作中的位置pos大于等于0，并且小于当前文字的字符个数；</span><br><span class="line"></span><br><span class="line">4、若已无操作可撤销，则再进行撤销操作无效；</span><br><span class="line"></span><br><span class="line">5、文本在编辑过程中，总字符个数不会超过512。</span><br><span class="line"></span><br><span class="line">【输入形式】</span><br><span class="line"></span><br><span class="line">先从键盘输入一行字符串，表示已经经过n步编辑操作后的文本串，然后在下一行输入一个正整数n，并分行输入n步插入或删除操作（表示按时间先后顺序已进行的操作），格式如上所述。随后空一行，再分行输入将要进行的编辑操作，格式如上所述。直到输入-1操作为止。</span><br><span class="line"></span><br><span class="line">【输出形式】</span><br><span class="line"></span><br><span class="line">在屏幕上输出最终编辑后的文本内容。</span><br><span class="line"></span><br><span class="line">【样例输入】</span><br><span class="line"></span><br><span class="line">A Stack is a container of objects that are inserted and removed according to the last-in first-out (LIFO) principle.???</span><br><span class="line"></span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">1 20 ainer</span><br><span class="line"></span><br><span class="line">2 0 ???</span><br><span class="line"></span><br><span class="line">1 85 -</span><br><span class="line"></span><br><span class="line">1 99 (LIFO)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">2 110 10</span><br><span class="line"></span><br><span class="line">1 110 Objects</span><br><span class="line"></span><br><span class="line">2 98 1</span><br><span class="line"></span><br><span class="line">2 0 1</span><br><span class="line"></span><br><span class="line">2 108 10</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">【样例输出】</span><br><span class="line"></span><br><span class="line">A Stack is a container of objects that are inserted and removed according to the last-in first-out  principle.Objects</span><br><span class="line"></span><br><span class="line">【样例说明】</span><br><span class="line"></span><br><span class="line">第一行输入的文本串是先后经过下面4次编辑操作后得到的：先在20位置插入了字符串ainer，然后删除了开始位置的字符串???，随后在85位置插入了一个字符-，最后在99位置插入了字符串(LIFO)。</span><br><span class="line"></span><br><span class="line">随后输入了撤销操作，即撤销先前最后进行的“1 99 (LIFO)”操作，也就是将99位置的6个字符删除；</span><br><span class="line"></span><br><span class="line">2 110 10：将文本串最后的字符串???删除；</span><br><span class="line"></span><br><span class="line">1 110 Objects：在文本串末尾插入字符串Objects；</span><br><span class="line"></span><br><span class="line">随后执行了三次删除操作，又执行了三次撤销操作，最后输入的-1表示编辑操作结束，在屏幕上输出最终编辑后的文本串。</span><br><span class="line"></span><br><span class="line">【评分标准】</span><br><span class="line"></span><br><span class="line">该程序要求编程模拟编辑操作，提交程序文件名为edit.c。</span><br></pre></td></tr></table></figure>
 
@@ -227,76 +162,5 @@
 </blockquote>
 </blockquote>
 </blockquote>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%A0%88%EF%BC%8C%E9%98%9F%E5%88%97/" rel="tag"># 栈，队列</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2025/04/13/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-angle-left"></i> Hello World
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2025/04/15/CS61A-notes/" rel="next" title="CS61A notes">
-                  CS61A notes <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Oiiiink</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-</body>
-</html>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="https://Oiiiink.github.io">Oiiiink</a></p><p> <span>Link:  </span><a href="https://oiiiink.github.io/2025/04/15/Stack-and-Queue/">https://oiiiink.github.io/2025/04/15/Stack-and-Queue/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2025/04/15/CS61A-notes/" title="CS61A notes"><span>< PreviousPost</span><br><span class="prevTitle">CS61A notes</span></a><a class="nextSlogan" href="/2025/04/13/hello-world/" title="Hello World"><span>NextPost ></span><br><span class="nextTitle">Hello World</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4"><span class="toc-number">1.</span> <span class="toc-text">写在开头</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%97%B6%E4%B8%80%E5%AE%9A%E8%A6%81%E5%85%85%E5%88%86%E7%90%86%E8%A7%A3%E5%90%84%E7%BB%93%E6%9E%84%E7%9A%84%E7%89%B9%E7%82%B9%E5%92%8C%E4%BC%98%E5%8A%A3%EF%BC%8C%E4%B8%8D%E8%A6%81%E2%80%9C%E6%97%A2%E8%A6%81%E6%9C%89%E8%A6%81%E2%80%9D%EF%BC%8C%E6%AF%94%E5%A6%82%E5%AE%9E%E7%8E%B0%E6%A0%88%E6%97%B6%E5%B0%B1%E4%B8%8D%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%88%90%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%8C%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E5%8F%8C%E5%90%91%E9%81%8D%E5%8E%86%E5%B0%B1%E4%B8%8D%E8%A6%81%E8%AE%BE%E8%AE%A1%E6%88%90%E6%A0%88%EF%BC%8C%E5%90%A6%E5%88%99%E5%B0%B1%E4%BC%9A%E5%8F%98%E6%88%90%E5%9B%9B%E4%B8%8D%E5%83%8F%E3%80%82-%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4-%E6%A0%88-%E7%BB%93%E7%82%B9-%E5%90%84%E6%93%8D%E4%BD%9C-%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8-%E8%AE%A1%E7%AE%97%E5%99%A8-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90-%E4%B8%AD%E7%BC%80%E8%BD%AC%E5%90%8E%E7%BC%80-%E6%9C%AC%E9%A2%98%E4%BB%A3%E7%A0%81-%E6%80%9D%E8%B7%AF%E4%BA%8C%E7%A4%BA%E4%BE%8B-%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%92%E5%BD%92-%E9%98%9F%E5%88%97-%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F-%E5%AD%A6%E4%BA%86%E5%A0%86%E5%86%8D%E6%9D%A5%E5%86%99%E3%80%82-%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90%E4%B8%8E%E6%94%B9%E8%BF%9B-2-%E8%AE%A1%E7%AE%97%E5%99%A8-%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%88%9D%E7%89%88%E7%9A%84%E9%94%99%E8%AF%AF%E5%88%86%E6%9E%90-4-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.1.</span> <span class="toc-text">在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。- 写在开头-   - 结点  - 各操作  - 栈的应用      - 计算器        - 问题分析          - 中缀转后缀        - 本题代码        - 思路二示例      - 栈实现递归- 队列    - 生产者-消费者模式  - 学了堆再来写。  - 作业分析与改进      - 2.计算器        - 自己写的初版的错误分析      - 4.文本编辑操作模拟
+   </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">2.</span> <span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">结点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">各操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">栈的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">计算器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">2.3.0.1.1.</span> <span class="toc-text">问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%AD%E7%BC%80%E8%BD%AC%E5%90%8E%E7%BC%80"><span class="toc-number">2.3.0.1.1.1.</span> <span class="toc-text">中缀转后缀</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%AC%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.0.1.2.</span> <span class="toc-text">本题代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.0.1.3.</span> <span class="toc-text">思路二示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%92%E5%BD%92"><span class="toc-number">2.3.0.2.</span> <span class="toc-text">栈实现递归</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.0.1.</span> <span class="toc-text">生产者-消费者模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%BA%86%E5%A0%86%E5%86%8D%E6%9D%A5%E5%86%99%E3%80%82"><span class="toc-number">3.1.</span> <span class="toc-text">学了堆再来写。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90%E4%B8%8E%E6%94%B9%E8%BF%9B"><span class="toc-number">3.2.</span> <span class="toc-text">作业分析与改进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">2.计算器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84%E5%88%9D%E7%89%88%E7%9A%84%E9%94%99%E8%AF%AF%E5%88%86%E6%9E%90"><span class="toc-number">3.2.0.1.1.</span> <span class="toc-text">自己写的初版的错误分析</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">4.文本编辑操作模拟</span></a></li></ol></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

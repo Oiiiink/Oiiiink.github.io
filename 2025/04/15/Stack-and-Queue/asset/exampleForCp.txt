@@ -1,0 +1,147 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define MAXSIZE 100
+typedef int DataType; // 可扩展为浮点型
+
+enum symbol { NUM, OP, EQ, OTHER }; // 符号类型
+enum oper { EPT, ADD, MIN, MUL, DIV, LEFT, RIGHT }; // 运算符（含括号和等号）
+
+int Pri[] = { -1, 0, 0, 1, 1, 2, 2 }; // 运算符优先级
+union sym {
+    DataType num;
+    enum oper op;
+}; // 符号：运算数或运算符
+
+DataType Num_stack[MAXSIZE]; // 数据栈
+enum oper Op_stack[MAXSIZE]; // 运算符栈
+int Ntop = -1; // 数据栈顶指针
+int Otop = -1; // 运算符栈顶指针
+
+// 数据栈操作
+void pushNum(DataType num) {
+    if (Ntop == MAXSIZE - 1) {
+        printf("Number stack is full!\n");
+        exit(1);
+    }
+    Num_stack[++Ntop] = num;
+}
+
+DataType popNum() {
+    if (Ntop == -1) {
+        printf("Number stack is empty!\n");
+        exit(1);
+    }
+    return Num_stack[Ntop--];
+}
+
+// 运算符栈操作
+void pushOp(enum oper op) {
+    if (Otop == MAXSIZE - 1) {
+        printf("Operator stack is full!\n");
+        exit(1);
+    }
+    Op_stack[++Otop] = op;
+}
+
+enum oper popOp() {
+    if (Otop != -1) {
+        return Op_stack[Otop--];
+    }
+    return EPT;
+}
+
+enum oper topOp() {
+    return Op_stack[Otop];
+}
+
+// 计算当前运算符对应的结果
+void compute(enum oper op) {
+    DataType tmp;
+    switch (op) {
+        case ADD:
+            pushNum(popNum() + popNum());
+            break;
+        case MIN:
+            tmp = popNum();
+            pushNum(popNum() - tmp); // 注意顺序：后出栈的是左运算数
+            break;
+        case MUL:
+            pushNum(popNum() * popNum());
+            break;
+        case DIV:
+            tmp = popNum();
+            pushNum(popNum() / tmp); // 注意顺序：后出栈的是左运算数
+            break;
+        default:
+            break;
+    }
+}
+
+// 处理运算符（包括括号）
+void operate(enum oper op) {
+    enum oper t;
+    if (op != RIGHT) { // 不是右括号
+        while (Pri[op] <= Pri[topOp()] && topOp() != LEFT) {
+            compute(popOp()); // 弹出并计算高优先级运算符
+        }
+        pushOp(op); // 当前运算符入栈
+    } else { // 处理右括号
+        while ((t = popOp()) != LEFT) {
+            compute(t); // 弹出并计算括号内所有运算符
+        }
+    }
+}
+
+// 获取下一个符号（运算数或运算符）
+enum symbol getSym(union sym *item) {
+    int c, n;
+    while ((c = getchar()) != '=') {
+        if (c >= '0' && c <= '9') { // 读取数字
+            for (n = 0; c >= '0' && c <= '9'; c = getchar()) {
+                n = n * 10 + c - '0';
+            }
+            ungetc(c, stdin); // 回退非数字字符
+            item->num = n;
+            return NUM;
+        } else if (!isspace(c)) { // 忽略空格
+            switch (c) {
+                case '+': item->op = ADD; return OP;
+                case '-': item->op = MIN; return OP;
+                case '*': item->op = MUL; return OP;
+                case '/': item->op = DIV; return OP;
+                case '(': item->op = LEFT; return OP;
+                case ')': item->op = RIGHT; return OP;
+                default: return OTHER; // 非法字符
+            }
+        }
+    }
+    return EQ; // 读到等号
+}
+
+int main() {
+    union sym item;
+    enum symbol s;
+    while ((s = getSym(&item)) != EQ) {
+        if (s == NUM) {
+            pushNum(item.num); // 数字入数据栈
+        } else if (s == OP) {
+            operate(item.op); // 处理运算符
+        } else {
+            printf("Error in the expression!\n");
+            return 1;
+        }
+    }
+    // 处理剩余运算符
+    while (Otop >= 0) {
+        compute(popOp());
+    }
+    if (Ntop == 0) { // 正常情况：数据栈只剩结果
+        printf("%d\n", popNum());
+    } else {
+        printf("Error: Invalid expression!\n");
+    }
+    return 0;
+}

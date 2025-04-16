@@ -1,592 +1,127 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"oiiiink.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Oiiiink&#39;s Blog">
-<meta property="og:url" content="https://oiiiink.github.io/index.html">
-<meta property="og:site_name" content="Oiiiink&#39;s Blog">
-<meta property="og:description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Oiiiink">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="https://oiiiink.github.io/">
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Oiiiink's Blog</title>
-  
-
-
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Oiiiink's Blog</h1>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Enjoy Programming ! Enjoy life   -----送给我自己</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</header>
-        
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Oiiiink</p>
-  <div class="site-description" itemprop="description">这个博客将主要作为我的学习笔记，也会写点生活感悟</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">4</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
-
-    
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://oiiiink.github.io/2025/04/15/CS61A-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Oiiiink">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oiiiink's Blog">
-      <meta itemprop="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Oiiiink's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/15/CS61A-notes/" class="post-title-link" itemprop="url">CS61A notes</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-15 13:58:13 / 修改时间：14:16:54" itemprop="dateCreated datePublished" datetime="2025-04-15T13:58:13+08:00">2025-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="第四课"><a href="#第四课" class="headerlink" title="第四课"></a>第四课</h2><h3 id="用函数来表示判断语句"><a href="#用函数来表示判断语句" class="headerlink" title="用函数来表示判断语句"></a>用函数来表示判断语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> statement :</span><br><span class="line">    expression1</span><br><span class="line"><span class="keyword">else</span> expression2</span><br><span class="line"></span><br><span class="line">等于</span><br><span class="line"></span><br><span class="line">def if_(statement , expression1 , expression2) :</span><br><span class="line">    <span class="keyword">if</span> statement :</span><br><span class="line">        expression1</span><br><span class="line">    <span class="keyword">else</span> expression2</span><br></pre></td></tr></table></figure>
-<p>但是python调用函数时，会先将传入函数的所有参数求值，再进入函数所在frame，也就是说，用函数代替判断语句时，可能会出现问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def if_(x &gt;= 0 , sqrt(x) , 0):</span><br></pre></td></tr></table></figure>
-<p>该情况下，sqrt(-16)会先进行运算，导致程序出错。</p>
-<h3 id="and-，-or-短路"><a href="#and-，-or-短路" class="headerlink" title="and ， or 短路"></a>and ， or 短路</h3><p>判断语句和and，or都会跳过部分语句。</p>
-<h3 id="函数作为返回值"><a href="#函数作为返回值" class="headerlink" title="函数作为返回值"></a>函数作为返回值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def makeadder_(k) :</span><br><span class="line">    def adder_(n) :</span><br><span class="line">        <span class="built_in">return</span> n + k</span><br><span class="line">    def mul_(n) :</span><br><span class="line">        <span class="built_in">return</span> n * k</span><br><span class="line">    <span class="built_in">return</span> adder_ , mul_</span><br><span class="line"></span><br><span class="line">Myadd , Mymul = makeadder_(3)</span><br><span class="line"><span class="comment">#makeadder_函数接受参数3赋给k并构造了一个adder_函数，该函数需要接受参数传递给n，并返回n + 3的值，3由makeadder_给出</span></span><br><span class="line">num = Myadd(5) <span class="comment"># 8</span></span><br><span class="line">num1 = Mymul(5) <span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://oiiiink.github.io/2025/04/15/Stack-and-Queue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Oiiiink">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oiiiink's Blog">
-      <meta itemprop="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Oiiiink's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/15/Stack-and-Queue/" class="post-title-link" itemprop="url">Stack and Queue</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-15 09:58:58 / 修改时间：15:00:43" itemprop="dateCreated datePublished" datetime="2025-04-15T09:58:58+08:00">2025-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h3 id="作业分析与改进（第四次作业）"><a href="#作业分析与改进（第四次作业）" class="headerlink" title="作业分析与改进（第四次作业）"></a>作业分析与改进（第四次作业）</h3><p><a href="#4-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%93%8D%E4%BD%9C%E6%A8%A1%E6%8B%9F">4.文本编辑操作模拟</a></p>
-<h4 id="4-文本编辑操作模拟"><a href="#4-文本编辑操作模拟" class="headerlink" title="4.文本编辑操作模拟"></a>4.文本编辑操作模拟</h4><p><a href="2025/04/15/Stack-and-Queue/asset/edit.txt">自己写的源码</a><br>题目描述</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">【问题描述】</span><br><span class="line"></span><br><span class="line">编写一程序模拟文本编辑操作。首先从标准输入读取一行字符串（字符个数不超过512），该行字符串是已经过n（大于0，小于等于10）步编辑操作后的结果。然后从下一行读取n，以及已发生过的n步编辑操作，编辑操作分行输入，输入格式为：</span><br><span class="line"></span><br><span class="line">op pos str</span><br><span class="line"></span><br><span class="line">其中op为编辑操作命令编码（在此只有插入和删除操作，1表示插入或2表示删除操作）；pos表示插入或删除的位置；str表示已经插入或删除的字符串（中间没有空格）。各数据间以一个空格分隔。</span><br><span class="line"></span><br><span class="line">然后在空一行后，再分行输入当前将要进行的编辑操作，包括如下四种操作（操作编码分别为：1表示插入，2表示删除操作，3表示撤销（即undo操作），-1表示结束）：</span><br><span class="line"></span><br><span class="line">1 pos str</span><br><span class="line"></span><br><span class="line">表示将在pos位置插入字符串str（中间没有空格），各数据间以一个空格分隔；</span><br><span class="line"></span><br><span class="line">2 pos n</span><br><span class="line"></span><br><span class="line">表示将从pos位置开始删除n个字符（各数据间以一个空格分隔），若要删除的字符个数多于已有字符个数（即在文本中从pos开始的字符个数小于n），则按实际字符数删除即可。（提示：为了能够撤销删除操作，应按“2 pos str”形式保存命令。）</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">表示撤销最近执行的插入或删除操作，可以进行多次撤销操作，注意：也可以撤销之前已经发生过的n步编辑操作中的操作。</span><br><span class="line"></span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">表示退出编辑操作，在屏幕上输出最终编辑后的文本。</span><br><span class="line"></span><br><span class="line">要求：</span><br><span class="line"></span><br><span class="line">1、上述所有输入的编辑操作中的字符串str都不包含空白字符（空格符、制表符或换行符）；</span><br><span class="line"></span><br><span class="line">2、插入操作中的位置pos大于等于0，并且小于等于当前文本的字符个数；0位置表示文本第一个字符的位置；若pos为当前文本的字符个数，则表示在文本最后插入字符串；</span><br><span class="line"></span><br><span class="line">3、删除操作中的位置pos大于等于0，并且小于当前文字的字符个数；</span><br><span class="line"></span><br><span class="line">4、若已无操作可撤销，则再进行撤销操作无效；</span><br><span class="line"></span><br><span class="line">5、文本在编辑过程中，总字符个数不会超过512。</span><br><span class="line"></span><br><span class="line">【输入形式】</span><br><span class="line"></span><br><span class="line">先从键盘输入一行字符串，表示已经经过n步编辑操作后的文本串，然后在下一行输入一个正整数n，并分行输入n步插入或删除操作（表示按时间先后顺序已进行的操作），格式如上所述。随后空一行，再分行输入将要进行的编辑操作，格式如上所述。直到输入-1操作为止。</span><br><span class="line"></span><br><span class="line">【输出形式】</span><br><span class="line"></span><br><span class="line">在屏幕上输出最终编辑后的文本内容。</span><br><span class="line"></span><br><span class="line">【样例输入】</span><br><span class="line"></span><br><span class="line">A Stack is a container of objects that are inserted and removed according to the last-in first-out (LIFO) principle.???</span><br><span class="line"></span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">1 20 ainer</span><br><span class="line"></span><br><span class="line">2 0 ???</span><br><span class="line"></span><br><span class="line">1 85 -</span><br><span class="line"></span><br><span class="line">1 99 (LIFO)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">2 110 10</span><br><span class="line"></span><br><span class="line">1 110 Objects</span><br><span class="line"></span><br><span class="line">2 98 1</span><br><span class="line"></span><br><span class="line">2 0 1</span><br><span class="line"></span><br><span class="line">2 108 10</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">-1</span><br><span class="line"></span><br><span class="line">【样例输出】</span><br><span class="line"></span><br><span class="line">A Stack is a container of objects that are inserted and removed according to the last-in first-out  principle.Objects</span><br><span class="line"></span><br><span class="line">【样例说明】</span><br><span class="line"></span><br><span class="line">第一行输入的文本串是先后经过下面4次编辑操作后得到的：先在20位置插入了字符串ainer，然后删除了开始位置的字符串???，随后在85位置插入了一个字符-，最后在99位置插入了字符串(LIFO)。</span><br><span class="line"></span><br><span class="line">随后输入了撤销操作，即撤销先前最后进行的“1 99 (LIFO)”操作，也就是将99位置的6个字符删除；</span><br><span class="line"></span><br><span class="line">2 110 10：将文本串最后的字符串???删除；</span><br><span class="line"></span><br><span class="line">1 110 Objects：在文本串末尾插入字符串Objects；</span><br><span class="line"></span><br><span class="line">随后执行了三次删除操作，又执行了三次撤销操作，最后输入的-1表示编辑操作结束，在屏幕上输出最终编辑后的文本串。</span><br><span class="line"></span><br><span class="line">【评分标准】</span><br><span class="line"></span><br><span class="line">该程序要求编程模拟编辑操作，提交程序文件名为edit.c。</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>问题分析</p>
-<blockquote>
-<p>1.显然，本题需要对操作构建出一个栈，便于处理undo行为，且由于删除操作需要撤回，故不能简单地储存删除字符数，而是应该储存删除字符串。而对于字符串，由于需要进行频繁的插入删除操作，因此最好使用链表存储，在构建链表时，由于需要从找到的位置开始进行操作，为了连接前一节点的指针，我最初选择了双链表，但是在写代码过程中发现，由于存在0结点的操作，因此在寻找目标结点时，需要使用node -&gt; rlink，并构造头结点，因此不需要使用llink，本题可直接选择单链表，操作更简便。<br>2.（&#x2F;&#x2F;为简化操作,先对操作栈进行操作，最后一起对字符串进行操作），这一行是最开始的思路，该思路避免了无意义的撤回，但执行过程中发现，由于栈仅在一端操作，因此无法从最开始的操作向后进行，改思路无效，若使用双链表可使用该思路，在进行算法设计时，<strong>一定要充分考虑到数据结构的各项性质</strong>。<br>3.实际上，在实际情况下，用户本就可能实时对操作进行修改，不会像题目中一样存在固定操作栈，因此就是需要实时操作，不能采用2中思路。<br>4.该代码实现中出现了下列问题：</p>
-<blockquote>
-<ul>
-<li>对栈的操作不熟，开始时next指向反了，在栈中，next指向栈顶方向。</li>
-<li>忘记写函数返回值，为更正此问题，可以在每个函数中均写出return语句（void ： return;）</li>
-<li>remove函数与系统中函数重名，在函数命名时，尽量加入个性化，如My，加入大小写区分等</li>
-<li>使用头结点</li>
-</ul>
-</blockquote>
-</blockquote>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://oiiiink.github.io/2025/04/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Oiiiink">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oiiiink's Blog">
-      <meta itemprop="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Oiiiink's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-04-13 14:07:47 / 修改时间：10:22:05" itemprop="dateCreated datePublished" datetime="2025-04-13T14:07:47+08:00">2025-04-13</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="这里这里-Hello-Hexo"><a href="#这里这里-Hello-Hexo" class="headerlink" title="这里这里 Hello Hexo"></a>这里这里 Hello Hexo</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://oiiiink.github.io/2025/04/12/List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Oiiiink">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Oiiiink's Blog">
-      <meta itemprop="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Oiiiink's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/04/12/List/" class="post-title-link" itemprop="url">数据结构之线性表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-04-12 12:56:00" itemprop="dateCreated datePublished" datetime="2025-04-12T12:56:00+08:00">2025-04-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-15 15:06:10" itemprop="dateModified" datetime="2025-04-15T15:06:10+08:00">2025-04-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><ul>
-<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8">顺序表</a></li>
-<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8">单链表</a></li>
-<li><a href="#%E5%8F%8C%E9%93%BE%E8%A1%A8">双链表</a></li>
-<li><a href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8">循环线性表</a></li>
-</ul>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>源码 ： <a href="2025/04/12/List/asset/listByArray.txt">顺序表-C语言实现</a></p>
-<p>优点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.可进行排序，进而进行二分查找，查找便利。</span><br><span class="line">2.可进行下标索引，对于特定位置的元素查找的时间复杂度为O(1)。</span><br></pre></td></tr></table></figure>
-<p>缺点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.删改操作复杂,均为O(n)。</span><br><span class="line">2.长度固定，不够灵活。</span><br></pre></td></tr></table></figure>
-<p>具体的代码实现如上链接 ， 有以下几点值得注意：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.对MAXSIZE进行宏定义以便修改。</span><br><span class="line">2.在进行插入，删除时判断线性表是否为满，空（对于所有数据结构均要注意）。</span><br></pre></td></tr></table></figure>
-
-<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><p>源码 ： <a href="2025/04/12/List/asset/LinkedList.txt">单链表-C语言实现</a></p>
-<h4 id="构造原理"><a href="#构造原理" class="headerlink" title="构造原理"></a>构造原理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">链表采用任意的存储单元存储元素，通过元素之间的指针来反映各元素之间的逻辑关系</span><br></pre></td></tr></table></figure>
-
-<p><strong>链表的基本操作</strong></p>
-<ul>
-<li><a href="#create-List">createList(int n)</a> &#x2F;&#x2F; 创建一个具有n个结点的链表，这里没有写返回值 </li>
-<li><a href="#get-Length">getLength(Nodeptr list)</a> &#x2F;&#x2F; 获得链表的长度 </li>
-<li><a href="#print-List">printList(Nodeptr list)</a>; &#x2F;&#x2F; 打印输出一个链表的data域 </li>
-<li><a href="#Insert">Insert(Nodeptr list, ElemType elem)</a> </li>
-<li><a href="#search-Node">searchNode(Nodeptr list, ElemType elem)</a> &#x2F;&#x2F; 在链表中查找某一数据元素 </li>
-<li><a href="#delete-Node">deleteNode(Nodeptr list, ElemType elem)</a> &#x2F;&#x2F; 在链表中删除包含某一数据元素的结点<br><em>四大主要操作：创建、查找、插入、删除</em></li>
-</ul>
-<h4 id="create-List"><a href="#create-List" class="headerlink" title="create List"></a>create List</h4><p>推荐不在头节点存放值，而是作为链表元素个数及地址的标识位 ，对于增，删，查，改等操作更加便利</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Nodeptr createList(int n) // 创建一个具有n个结点的链表，这里没有写返回值</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr <span class="built_in">head</span> , ptr;</span><br><span class="line">    <span class="built_in">head</span> = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    <span class="built_in">head</span> -&gt; val = 0 ;</span><br><span class="line">    <span class="built_in">head</span> -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(int i = 0 ; i &lt; n ; ++i )</span><br><span class="line">    &#123;</span><br><span class="line">        Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">        node -&gt; next = NULL ;</span><br><span class="line">        node -&gt; val = getVal() ;    //getVal() , 一个用于读入值的函数</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">head</span> == NULL)&#123;</span><br><span class="line">            <span class="built_in">head</span> -&gt; next = node ;</span><br><span class="line">            ptr = node ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            ptr -&gt; next = node ;</span><br><span class="line">            ptr = ptr -&gt; next ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">head</span> -&gt; val ++ ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> <span class="built_in">head</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="get-Length"><a href="#get-Length" class="headerlink" title="get Length"></a>get Length</h4><p>在本写法中，直接将head结点的val域返回即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int getLength(Nodeptr list) // 获得链表的长度 </span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span> list -&gt; val ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也可从头结点开始遍历</p>
-<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><p>主要有三种插入方式：头插法，尾插法，在某特定结点后插入</p>
-<h5 id="头插法"><a href="#头插法" class="headerlink" title="头插法"></a>头插法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void headInsert(Nodeptr list , ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    node -&gt; next = list -&gt; next ;</span><br><span class="line">    list -&gt; next = node ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void tailInsert(Nodeptr list , ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    //尾插法采用遍历方式，时间复杂度为O(n)</span><br><span class="line">    Nodeptr ptr = list ;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL) ptr = ptr -&gt; next ;</span><br><span class="line">    ptr -&gt; next = node ;</span><br><span class="line"></span><br><span class="line">    list -&gt; val ++ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="在某特定结点处插入"><a href="#在某特定结点处插入" class="headerlink" title="在某特定结点处插入"></a>在某特定结点处插入</h5><p>假设我们已经通过某些规则找到了需要插入其后的结点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void insertNode(Nodeptr list, Nodeptr* p, ElemType elem)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; next = NULL ;</span><br><span class="line"></span><br><span class="line">    //尾插法采用遍历方式，时间复杂度为O(n)</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    //找到特定结点，若未找到则插入尾端</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL &amp;&amp; ptr != p) ptr = ptr -&gt; next ;</span><br><span class="line">    node -&gt; next = ptr -&gt; next ;</span><br><span class="line">    ptr -&gt; next = node ;</span><br><span class="line"></span><br><span class="line">    list -&gt; val ++ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实际上，头插法可以看作是p &#x3D;&#x3D; list , 尾插法可以看作是p &#x3D;&#x3D; NULL 或者p &#x3D;&#x3D; 一个不存在的结点 </p>
-<h4 id="delete-Node"><a href="#delete-Node" class="headerlink" title="delete Node"></a>delete Node</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void deleteNode(Nodeptr list, ElemType elem) // 在链表中删除包含某一数据元素的结点 </span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL &amp;&amp; ptr -&gt; next -&gt; val != elem) ptr = ptr -&gt; next ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr -&gt; next == NULL) <span class="built_in">printf</span>(<span class="string">&quot;Err : delete failure \n&quot;</span>) ;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Nodeptr remove = ptr -&gt; next ;</span><br><span class="line">        ptr -&gt; next = remove -&gt; next ;</span><br><span class="line"></span><br><span class="line">        free(remove) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="search-Node"><a href="#search-Node" class="headerlink" title="search Node"></a>search Node</h4><p>在链表中查找某元素 ，找到则返回元素在当前链表中的位置，否则返回-1<br><em>需要注意的是，由于链表的插入位置任意，因此返回的位置只在链表不发生改变的情况下可用</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int searchNode(Nodeptr list, ElemType elem) // 在链表中查找某一数据元素</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list -&gt; next ;</span><br><span class="line">    int k = 1 ;</span><br><span class="line">    <span class="keyword">while</span>(ptr != NULL &amp;&amp; ptr -&gt; val != elem) &#123;</span><br><span class="line">        ptr = ptr -&gt; next ;</span><br><span class="line">        k++ ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr == NULL)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;No target\n&quot;</span>) ;</span><br><span class="line">        <span class="built_in">return</span> -1 ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">return</span> k ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h4 id="print-List"><a href="#print-List" class="headerlink" title="print List"></a>print List</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void printList(Nodeptr list) // 打印输出一个链表的data域 </span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr ptr = list;</span><br><span class="line">    <span class="keyword">while</span>(ptr -&gt; next != NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span> , ptr -&gt; next -&gt; val); </span><br><span class="line">        ptr = ptr -&gt; next ;</span><br><span class="line">    &#125;</span><br><span class="line">    ptr = ptr -&gt; next ;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span> , ptr -&gt; val ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3><p>为了区别与单链表的同时简化表示，我们在本博客中使用DList来表示双链表,双链表含有val域，rlink域，llink域，构造方式如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct DNode&#123;</span><br><span class="line">    int val ;</span><br><span class="line">    struct DNode* rlink ;</span><br><span class="line">    struct DNode* llink ;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>由定义不难发现，双链表的头结点始终llink始终为NULL ， 尾结点rlink始终为NULL</p>
-<h4 id="双链表的优缺点"><a href="#双链表的优缺点" class="headerlink" title="双链表的优缺点"></a>双链表的优缺点</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">优点：</span><br><span class="line">    1.左右指针使得双链表在进行查找，删除，增加时有更大的灵活性</span><br><span class="line">    2.双向遍历成为可能</span><br><span class="line">缺点：</span><br><span class="line">    1.操作更加复杂，需要考虑的边界情况更多（主要）</span><br><span class="line">    2.占用内存比单链表更大（微乎其微）</span><br></pre></td></tr></table></figure>
-<h4 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.对于先找到特定结点，再对其附近元素进行修改的情况，使用双链表（以空间换时间）</span><br><span class="line">2.当头结点可能并不固定时，采用双链表，即循环链表（双链表具有极高的对称性，第一个结点和最后一个结点实际上是等价的）</span><br></pre></td></tr></table></figure>
-
-<h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><p>双链表和单链表有着几乎完全相同的操作，只是实现略有不同，故只挑选差异较大的几个函数重新实现</p>
-<ul>
-<li><a href="#D-create-List">createDList(int n)</a> &#x2F;&#x2F; 创建一个具有n个结点的链表，这里没有写返回值 </li>
-<li><a href="#D-Insert">Insert(Nodeptr list, ElemType elem)</a> </li>
-<li><a href="#D-delete-Node">deleteDNode(Nodeptr list, ElemType elem)</a> &#x2F;&#x2F; 在链表中删除包含某一数据元素的结点<br><em>四大主要操作：创建、查找、插入、删除</em></li>
-</ul>
-<h5 id="D-create-List"><a href="#D-create-List" class="headerlink" title="D create List"></a>D create List</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Nodeptr createDList(int n)</span><br><span class="line">&#123;</span><br><span class="line">    Nodeptr list = NULL , ptr = NULL ;</span><br><span class="line">    list = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">    list -&gt; val = 0 ;</span><br><span class="line">    list -&gt; rlink = list -&gt; llink = NULL ;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int i = 0 ; i &lt; n ; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        Nodeptr node = (Nodeptr)malloc(sizeof(Node)) ;</span><br><span class="line">        node -&gt; val = getVal() ;</span><br><span class="line">        node -&gt; rlink = node -&gt; llink = NULL ;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(list -&gt; rlink == NULL) // 意味着链表为空</span><br><span class="line">        &#123;</span><br><span class="line">            list -&gt; rlink = node ;</span><br><span class="line">            ptr = node ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            node -&gt; llink = ptr ;</span><br><span class="line">            ptr -&gt; rlink = node ;</span><br><span class="line">            ptr = ptr -&gt; rlink ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        list -&gt; val ++ ;    //链表元素个数加一</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="D-Insert"><a href="#D-Insert" class="headerlink" title="D Insert"></a>D Insert</h5><p>&#x3D;&#x3D;在双链表插入时有一个技巧，即先将node的左右指针连接好，再对node结点的左右结点进行修改，最后，不要忘记list -&gt; val ++ ;&#x3D;&#x3D;</p>
-<p>考虑到双链表的结构对称性，我们仅讨论普通的插入，即找到需要插入的某个位置的结点pos，进行插入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void Insert(Nodeptr list , ElemType elem , Nodeptr pos)</span><br><span class="line">&#123;</span><br><span class="line">    ***</span><br><span class="line">        代码：根据题目要求找到结点pos</span><br><span class="line">    ***</span><br><span class="line"></span><br><span class="line">    Nodeptr node = (Nodeptr)malloc(Node) ;</span><br><span class="line">    node -&gt; val = elem ;</span><br><span class="line">    node -&gt; llink = node -&gt; rlink = NULL ;</span><br><span class="line"></span><br><span class="line">    方式一：插到该节点左边</span><br><span class="line">    Nodeptr left = pos -&gt; llink ;</span><br><span class="line">    node -&gt; llink = left ;</span><br><span class="line">    node -&gt; rlink = pos ;</span><br><span class="line">    <span class="keyword">if</span>(left != NULL) left -&gt; rlink = node ;     //对于不含头结点的头插法</span><br><span class="line">    pos -&gt; llink = node ;</span><br><span class="line"></span><br><span class="line">    方式二：右边</span><br><span class="line">    Nodeptr right = pos -&gt; rlink ;</span><br><span class="line">    node -&gt; llink = pos ;</span><br><span class="line">    node -&gt; rlink = righ ;</span><br><span class="line">    <span class="keyword">if</span>(right != NULL) right -&gt; llink = node ;</span><br><span class="line">    pos -&gt; rlink = node ;</span><br><span class="line"></span><br><span class="line">    list -&gt; val ++ ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果将pos设置为list，选择方式二，就是头插法<br>如果将pos设置为尾结点，选择方式二，就是尾插法</p>
-<h5 id="D-delete-Node"><a href="#D-delete-Node" class="headerlink" title="D delete Node"></a>D delete Node</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ElemType deleteDNode(Nodeptr list , Nodeptr p)</span><br><span class="line">&#123;</span><br><span class="line">    ***</span><br><span class="line">        根据需求写代码找到需要删除的结点</span><br><span class="line">    ***</span><br><span class="line"></span><br><span class="line">    Nodeptr right = p -&gt; rlink ;</span><br><span class="line">    Nodeptr left = p -&gt; left ;</span><br><span class="line">    <span class="keyword">if</span>(!right) right -&gt; llink = left ;</span><br><span class="line">    <span class="keyword">if</span>(!left) left -&gt; rlink = right ;</span><br><span class="line"></span><br><span class="line">    int val = p -&gt; val ;</span><br><span class="line">    free(p) ;</span><br><span class="line">    <span class="built_in">return</span> val ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该操作需要注意的是要提前将左右结点以及val保存，否则free操作后无法再次获取</p>
-<h4 id="一些使用感悟及注意事项"><a href="#一些使用感悟及注意事项" class="headerlink" title="一些使用感悟及注意事项"></a>一些使用感悟及注意事项</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 双链表同时具有左右指针，实际上是空间换时间，在操作时需要多加注意</span><br><span class="line">- 每次对某个结点操作时，需要先对该节点的rlink，llink，val进行处理，再对左右结点进行处理</span><br><span class="line">- 在处理双链表时，由于结构的对称性，变量命名时常常会出现相似的命名，这使得后续操作极易混淆且容易出现重复命名（坚决不允许），因此可以采用一些办法</span><br><span class="line">    -首先，对于不同变量命名时尽量使用更多修饰词，如rightNode，leftNode等来区分不同变量，而不能简单地用大小写区分。</span><br><span class="line">    -在平时使用时养成固定的命名习惯：</span><br><span class="line">    -多加练习</span><br></pre></td></tr></table></figure>
-
-<h3 id="循环线性表"><a href="#循环线性表" class="headerlink" title="循环线性表"></a>循环线性表</h3><p><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0">数组实现</a><br><a href="#%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0">链表实现</a></p>
-<h4 id="数组实现"><a href="#数组实现" class="headerlink" title="数组实现"></a>数组实现</h4><p>&#x3D;&#x3D;通过将下标操作后对长度SIZE取余来实现循环操作&#x3D;&#x3D;<br>&nbsp;&nbsp;&nbsp;&nbsp;主要有(i + 1) % SIZE 和 (i - 1 + SIZE) % SIZE </p>
-<p>数组实现操作较为便利，但其局限性也较多</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.数组长度固定，灵活性不足。同样由于这个原因，在进行插入操作时需要判定表是否已满</span><br><span class="line">2.表自构建以后，在其不为空的情况下，其<span class="built_in">head</span>和<span class="built_in">tail</span>就不可能相等，因此可将其作为判定表是否为空的条件</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"><span class="comment">#define SIZE 1000</span></span><br><span class="line"></span><br><span class="line">int list[SIZE] ;</span><br><span class="line">int <span class="built_in">head</span> , <span class="built_in">tail</span> ;</span><br><span class="line">void <span class="function"><span class="title">initial</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    //初始化时将<span class="built_in">head</span>与<span class="built_in">tail</span>均设为0</span><br><span class="line">    <span class="built_in">head</span> = <span class="built_in">tail</span> = 0 ;</span><br><span class="line">&#125;</span><br><span class="line">int <span class="function"><span class="title">isFull</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    //采用这种方法，有效地考虑到<span class="built_in">head</span> = 0 的情况</span><br><span class="line">    <span class="built_in">return</span> (<span class="built_in">head</span> + SIZE - <span class="built_in">tail</span> ) % SIZE == 1 ;</span><br><span class="line">&#125;</span><br><span class="line">int Insert(int k , int val) // 在第k个位置后插入val</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(isFull()) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Err : insert err \n&quot;</span>) ;</span><br><span class="line">        <span class="built_in">return</span> -1 ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        int i = (<span class="built_in">tail</span> + 1) % SIZE ;</span><br><span class="line">        <span class="keyword">while</span>((i - (k + head - <span class="number">1</span>) % SIZE + SIZE) % SIZE &gt; <span class="number">0</span> )&#123;</span><br><span class="line">            list[i] = list[(i - <span class="number">1</span> + SIZE) % SIZE] ;</span><br><span class="line">            i = (i - <span class="number">1</span> + SIZE) % SIZE ;</span><br><span class="line">        &#125;</span><br><span class="line">        list[i] = val ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br><span class="line">int delete()</span><br><span class="line">&#123;</span><br><span class="line">    if(head == tail) &#123;</span><br><span class="line">        printf(&quot;Err: delete err \n&quot;) ;</span><br><span class="line">        return -<span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    else&#123;</span><br><span class="line">        tail = (tail - <span class="number">1</span> + SIZE) % SIZE ;</span><br><span class="line">        // or head = (head + <span class="number">1</span>) % SIZE ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    return <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="双链表实现"><a href="#双链表实现" class="headerlink" title="双链表实现"></a>双链表实现</h4><p>考虑到单链表是双链表的简化操作，故只写双链表代码<br>&#x3D;&#x3D;注意&#x3D;&#x3D;</p>
-<blockquote>
-<p>循环链表中不存在指向NULL的指针</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">void <span class="function"><span class="title">initial</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    DNodeptr list = (DNodeptr)malloc(sizeof(DNode)) ;</span><br><span class="line">    list -&gt; data = 0 ;</span><br><span class="line">    list -&gt; rlink = list ;</span><br><span class="line">    list -&gt; llink = list ;</span><br><span class="line">&#125;</span><br><span class="line">可以形象地将循环链表中的左右指针理解为结点地一双手，将循环链表想象成各结点围成一圈抱起来，因此初始化时需要将list“左右手”均抱着自己。</span><br><span class="line">void insert(DNodeptr list , DNodeptr node)</span><br><span class="line">&#123;</span><br><span class="line">    node -&gt; rlink = list ;</span><br><span class="line">    node -&gt; llink = list -&gt; llink ;</span><br><span class="line">    </span><br><span class="line">    DNodeptr right = list , left = list -&gt; llink ;</span><br><span class="line">    right -&gt; llink = node ;</span><br><span class="line">    left -&gt; rlink = node ;</span><br><span class="line">&#125; </span><br><span class="line">DNodeptr searchNode(DNodeptr list , ElemType target)</span><br><span class="line">&#123;</span><br><span class="line">    DNodeptr ptr = list -&gt; rlink ;</span><br><span class="line">    <span class="keyword">while</span>(ptr != list &amp;&amp; ptr -&gt; val != target) ptr = ptr -&gt; rlink ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr == list ) <span class="built_in">return</span> NULL ; //查询失败</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> ptr ; </span><br><span class="line">&#125;</span><br><span class="line">int delete(DNodeptr list , ElemType val)</span><br><span class="line">&#123;</span><br><span class="line">    DNodeptr start = list -&gt; rlink ;</span><br><span class="line">    <span class="keyword">while</span>(ptr != list &amp;&amp; ptr -&gt; val != target) ptr = ptr -&gt; rlink ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ptr == list ) <span class="built_in">return</span> -1 ;</span><br><span class="line">    DNodeptr right = ptr -&gt; rlink , left = ptr -&gt; llink ;</span><br><span class="line">    right -&gt; llink = left ;</span><br><span class="line">    left -&gt; rlink = right ;</span><br><span class="line">    free(ptr) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="对作业的思考"><a href="#对作业的思考" class="headerlink" title="对作业的思考"></a>对作业的思考</h3><p><a href="#first">连续线段</a><br><a href="#second">多项式相乘</a><br><a href="#third">空闲空间申请模拟（最佳适应）</a><br><a href="#fourth">文件加密（环）</a><br><a href="#fifth">词频统计（数组或链表实现）</a></p>
-<h4 id="连续线段"><a href="#连续线段" class="headerlink" title="连续线段"></a>连续线段</h4>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2025</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Oiiiink</span>
-  </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="Oiiiink"><meta name="renderer" content="webkit"><meta name="copyright" content="Oiiiink"><meta name="keywords" content="Oiiiink's Blog"><meta name="description" content="这个博客将主要作为我的学习笔记，也会写点生活感悟"><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Mr.Long's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/cat.png"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">longlongyu</div><div class="profile-signature">for me</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Long's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.Long's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-github" href="//github.com/" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.facebook.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2025/04/15/CS61A-notes/">CS61A notes</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2025-04-15T05:58:13.000Z">2025-04-15</time></div><div class="recent-post-content">第四课用函数来表示判断语句12345678910if statement :    expression1else expression2等于def if_(statement , expression1 , expression2) :    if statement :        expression1    else expression2
+但是python调用函数时，会先将传入函数的所有参数求值，再进入函数所在frame，也就是说，用函数代替判断语句时，可能会出现问题
+1def if_(x &gt;= 0 , sqrt(x) , 0):
+该情况下，sqrt(-16)会先进行运算，导 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="CA61A , python"> CA61A , python</a></div><div class="read-more"><a class="more" href="/2025/04/15/CS61A-notes/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2025/04/15/Stack-and-Queue/">Stack and Queue</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2025-04-15T01:58:58.000Z">2025-04-15</time></div><div class="recent-post-content">写在开头在实现数据结构时一定要充分理解各结构的特点和优劣，不要“既要有要”，比如实现栈时就不要设计成双指针，如果需要双向遍历就不要设计成栈，否则就会变成四不像。- 写在开头- 栈  - 结点  - 各操作  - 栈的应用      - 计算器        - 问题分析          - 中缀转后缀        - 本题代码        - 思路二示例      - 栈实现递归- 队列    - 生产者-消费者模式  - 学了堆再来写。  - 作业分析与改进      - 2.计算器        - 自己写的初版的错误分析      - 4.文本编辑操作模拟
+   栈栈（LILO）最 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="栈，队列"> 栈，队列</a></div><div class="read-more"><a class="more" href="/2025/04/15/Stack-and-Queue/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2025/04/13/hello-world/">Hello World</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2025-04-13T06:07:47.870Z">2025-04-13</time></div><div class="recent-post-content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+这里这里 Hello HexoQuick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run se ...</div><div class="read-more"><a class="more" href="/2025/04/13/hello-world/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2025/04/12/List/">数据结构之线性表</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2025-04-12T04:56:00.000Z">2025-04-12</time></div><div class="recent-post-content">线性表
+顺序表
+单链表
+双链表
+循环线性表
+
+顺序表源码 ： 顺序表-C语言实现
+优点
+121.可进行排序，进而进行二分查找，查找便利。2.可进行下标索引，对于特定位置的元素查找的时间复杂度为O(1)。
+缺点
+121.删改操作复杂,均为O(n)。2.长度固定，不够灵活。
+具体的代码实现如上链接 ， 有以下几点值得注意：
+121.对MAXSIZE进行宏定义以便修改。2.在进行插入，删除时判断线性表是否为满，空（对于所有数据结构均要注意）。
+
+单链表源码 ： 单链表-C语言实现
+构造原理1链表采用任意的存储单元存储元素，通过元素之间的指针来反映各元素之间的逻辑关系
+
+链表的基本操作
+
+create ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="数据结构 ， 线性表 ，双向链表 ， 循环链表"> 数据结构 ， 线性表 ，双向链表 ， 循环链表</a></div><div class="read-more"><a class="more" href="/2025/04/12/List/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
