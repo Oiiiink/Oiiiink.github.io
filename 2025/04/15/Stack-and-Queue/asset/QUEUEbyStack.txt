@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    int val ;
+    struct Node* next ;
+};
+typedef struct Node Node ;
+typedef Node* (*func)(Node**) ;
+Node* topAns , *topTmp ;
+Node* initNode()
+{
+    Node* node = (Node*)malloc(sizeof(Node)) ;
+
+    node -> val = 0 ;
+    node -> next = NULL ;
+
+    return node ;
+}
+int isNull(Node* top)
+{
+    return top == NULL ;
+}
+Node* pop(Node** top)
+{
+    if(isNull(*top)) return NULL ;
+    Node* ret = *top ;
+    *top = (*top) -> next ;
+
+    return ret ;
+}
+void push(Node** top , Node* node)
+{
+    node -> next = *top ;
+    *top = node ;
+}
+void QueuePush(Node* node)
+{
+    while(topAns) push(&topTmp , pop(&topAns)) ;
+
+    push(&topAns , node) ;
+    while(topTmp) push(&topAns , pop(&topTmp)) ;
+}
+func QueuePop = pop ;
+
+int main(void)
+{
+    topAns = topTmp = NULL ;
+
+    return 0 ; 
+}
