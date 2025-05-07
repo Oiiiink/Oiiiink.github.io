@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Node{
+    int val ;
+    struct Node *left , *right ;
+} ;
+typedef struct Node BTNode ;
+BTNode *stack[100] ;
+int top = 0 ;
+BTNode* initNode()
+{
+    BTNode* tree = (BTNode* )malloc(sizeof(BTNode)) ;
+    tree -> left = NULL ;
+    tree -> right = NULL ;
+    tree -> val = 0 ;
+}
+// DLR
+void pre(BTNode* tree)
+{
+    if(!tree) return ; 
+    printf("%c" , tree -> val) ;
+    
+    pre(tree -> left) ;
+    pre(tree -> right) ;
+}
+// LDR
+void in(BTNode* tree)
+{
+    if(!tree) return ;
+
+    in(tree -> left) ;
+    printf("%c" , tree -> val) ;
+    in(tree -> right) ;
+}
+// LRD
+void post(BTNode* tree)
+{
+    if(!tree) return ; 
+
+    post(tree -> left ) ;
+    post(tree -> right) ;
+    printf("%c" , tree -> val) ;
+
+}
+
+/*将后缀表达式转换为二叉树
+创建一个空栈用于存储节点
+对于后缀表达式中的每个符号：
+    如果是操作数，创建新节点并入栈
+    如果是运算符：
+        创建新节点
+        弹出栈顶作为右子节点
+        弹出新栈顶作为左子节点
+        将新创建的节点压入栈
+表达式处理完成后，栈中唯一剩余的节点就是根节点
+*/
+int isNum(char c) {return (c <= '9') && (c >= '0') ;}
+void buildTree(BTNode** tree , char* s)
+{
+    int len = strlen(s) ;
+    for(int i = 0 ; i < len ; ++i )
+    {
+        BTNode* node = initNode() ;
+        node -> val = s[i] ;
+        if(isNum(s[i])) stack[top++] = node ;
+
+        else {
+            node -> right = stack[--top] ;
+            node -> left = stack[--top] ;
+            stack[top++] = node ; 
+        }
+    }
+
+    *tree = stack[--top] ;
+}
+int main(void)
+{
+    char* s = (char* )malloc(sizeof(char) * 100) ;
+    fgets(s , 100 , stdin) ;
+    BTNode* tree ;
+
+    buildTree(&tree , s) ;
+    free(s) ;
+    
+
+    printf("pre : ") ; pre(tree) ;
+    printf("\nin : ") ; in(tree) ;
+    printf("\npost : ") ; post(tree) ;
+
+    return 0 ;
+}
