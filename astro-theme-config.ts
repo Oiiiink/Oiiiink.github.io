@@ -12,18 +12,15 @@ type NavItem = {
 
 const config = {
   site: {
-    /** Production origin, used for canonical links, sitemap, and Open Graph metadata. */
-    url: 'https://example.com',
-    /** Subpath such as '/repo-name'. Keep empty when deploying at a domain root. */
+    url: 'https://oiiiink.github.io',
     base: '',
     lang: 'en',
     locale: 'en_US',
     dateLocale: 'en-US',
-    title: 'Tone',
-    logoLabel: 'Tone',
-    description: 'A minimal Astro theme for posts and notes.',
-    author: 'Alex Morgan',
-    /** Optional absolute or root-relative image URL for homepage/search/about social previews. */
+    title: "Xu Runtao",
+    logoLabel: "Runtao",
+    description: "Notes on coding, systems, and learning.",
+    author: "Xu Runtao",
     defaultOgImage: '/og.png',
   },
 
