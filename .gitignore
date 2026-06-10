@@ -34,3 +34,4 @@ local-docs/
 .codex/
 .playwright-mcp/
 .vercel
+private/
